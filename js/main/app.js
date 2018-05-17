@@ -5,7 +5,9 @@
 
 	$('a').click(function(e) {
 		e.preventDefault();
-		setTimeout(function() {window.location = this.href;}, 2000);
+
+		var destino = $(this).prop('href');
+		setTimeout(function() {window.location = destino;}, 2000);
 	});
 
 	$('.show-employee-form').click(function() {
@@ -193,7 +195,7 @@
 				        <td>` + zone.Hora + `</td>
 				        <td>` + zone.Name + `</td>
 				        <td>` + zone.Cargo + `</td>
-				        <td>` + parseInt(zone.Departamento) == 1 ? 'SALIDA' : 'ENTRADA' + `</td>
+				        <td>` + parseInt(zone.Marca) == 1 ? 'SALIDA' : 'ENTRADA' + `</td>
 				    </tr>`);
 				});
 			},
@@ -220,6 +222,32 @@
 				        text : employee.Nombre 
 				    }));
 				});
+			},
+
+			error: function (error) {
+				console.error('error', error);
+			}
+		});
+	});
+
+	$('.last-five-table').ready(function () {
+		$.ajax({
+			url: base_url + 'ultimosCinco',
+			type: 'GET',
+			dataType: 'json',
+
+			success: function (response) {
+				console.log('success', response);
+
+					$('.last-five-table').html('');
+					$.each(response, function (i, zone) {
+					    $('.last-five-table').append(`<tr>
+					        <td>` + zone.Hora + `</td>
+					        <td>` + zone.Name + `</td>
+					        <td>` + zone.Cargo + `</td>
+					        <td>` + parseInt(zone.Marca) == 1 ? 'SALIDA' : 'ENTRADA' + `</td>
+					    </tr>`);
+					});
 			},
 
 			error: function (error) {
