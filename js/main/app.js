@@ -3,6 +3,11 @@
 	var base_url = 'http://localhost:8080/tesis3/rest/';
 
 
+	$('a').click(function(e) {
+		e.preventDefault();
+		setTimeout(function() {window.location = this.href;}, 2000);
+	});
+
 	$('.show-employee-form').click(function() {
 		$('.save-employees').fadeIn();
 		$('.save-department').fadeOut();
@@ -147,7 +152,7 @@
 				console.log('success', response);
 				
 				$('.zones-table').html('');
-				$.each(data, function (i, zone) {
+				$.each(response, function (i, zone) {
 				    $('.zones-table').append(`<tr>
 				        <td>` + zone.Hora + `</td>
 				        <td>` + zone.Name + `</td>
