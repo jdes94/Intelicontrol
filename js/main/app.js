@@ -3,7 +3,7 @@
 	var base_url = 'http://localhost:8080/tesis3/rest/';
 
 
-	$('a').click(function(e) {
+	$('a.delay').click(function(e) {
 		e.preventDefault();
 
 		var destino = $(this).prop('href');
