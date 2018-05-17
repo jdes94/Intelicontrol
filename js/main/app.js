@@ -112,6 +112,7 @@
 				        <td>` + employee.Nombre + `</td>
 				        <td>` + employee.Cargo + `</td>
 				        <td>` + employee.Departamento + `</td>
+				        <td><button class="btn btn-danger delete-user" data-id="` + employee.Id + `" data-name="` + employee.Nombre + `">BORRAR</button></td>
 				    </tr>`);
 				});
 			},
@@ -120,6 +121,27 @@
 				console.error('error', error);
 			}
 		});
+	});
+
+	$('body').delegate('.delete-user', 'click', function() {
+		var _this = $(this);
+		
+		if (confirm('Esta seguro(a) de eliminar al usuario: ' _this.data('name')))
+			$.ajax({
+				url: base_url + 'borrarUsuario',
+				type: 'GET',
+				dataType: 'json',
+				data: {iduser: _this.data('id')},
+
+				success: function (response) {
+					console.log('success', response);
+					window.location.reload();
+				},
+
+				error: function (error) {
+					console.error('error', error);
+				}
+			});
 	});
 
 	$('.department-dd').ready(function () {
@@ -206,29 +228,29 @@
 		});
 	});
 
-	$('.lista-empleados').ready(function () {
-		$.ajax({
-			url: base_url + 'listadoEmpleados',
-			type: 'GET',
-			dataType: 'json',
-			data: {iddep: 0},
+	// $('.lista-empleados').ready(function () {
+	// 	$.ajax({
+	// 		url: base_url + 'listadoEmpleados',
+	// 		type: 'GET',
+	// 		dataType: 'json',
+	// 		data: {iddep: 0},
 
-			success: function (response) {
-				console.log('success', response);
+	// 		success: function (response) {
+	// 			console.log('success', response);
 
-				$.each(response, function (i, employee) {
-				    $('.lista-empleados').append($('<option>', { 
-				        value: employee.Id,
-				        text : employee.Nombre 
-				    }));
-				});
-			},
+	// 			$.each(response, function (i, employee) {
+	// 			    $('.lista-empleados').append($('<option>', { 
+	// 			        value: employee.Id,
+	// 			        text : employee.Nombre 
+	// 			    }));
+	// 			});
+	// 		},
 
-			error: function (error) {
-				console.error('error', error);
-			}
-		});
-	});
+	// 		error: function (error) {
+	// 			console.error('error', error);
+	// 		}
+	// 	});
+	// });
 
 	$('.last-five-table').ready(function () {
 		$.ajax({
