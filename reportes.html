@@ -70,29 +70,43 @@
         <div class="row mb-4">
           <div class="form-group col-lg-3 col-sm-6 col-12">
             <label for="Fecha desde">Desde </label>
-            <input type="date" id="date1" class="form-control mb-2">
+            <input type="date" id="fecha" class="form-control mb-2">
           </div>
           <div class="form-group col-lg-3 col-sm-6 col-12">
             <label for="Hora desde"> a las </label>
-            <input type="time" id="hour1" class="form-control mb-2">
+            <input type="time" id="hora" class="form-control mb-2">
+          </div>
+          <div class="form-group col-lg-3 col-sm-6 col-12">
+          	<label for="Fecha desde">Turno </label>
+            <select class="form-control" id="tipo">
+            	<option value="AM">AM</option>
+            	<option value="PM">PM</option>
+            </select>
           </div>
           <div class="form-group col-lg-3 col-sm-6 col-12">
             <label for="Fecha hasta">Hasta </label>
-            <input type="date" id="date1" class="form-control mb-2">
+            <input type="date" id="fecha2" class="form-control mb-2">
           </div>
           <div class="form-group col-lg-3 col-sm-6 col-12">
             <label for="Hora hasta"> a las </label>
-            <input type="time" id="hour1" class="form-control mb-2">
+            <input type="time" id="hora2" class="form-control mb-2">
+          </div>
+          <div class="form-group col-lg-3 col-sm-6 col-12">
+          	<label for="Fecha desde">Turno </label>
+            <select class="form-control" id="tipo2">
+            	<option value="AM">AM</option>
+            	<option value="PM">PM</option>
+            </select>
           </div>
           <div class="form-group col-lg-3 col-sm-6 col-12">
 						<label for="Departamento">Departamento: </label>
 						<select class="form-control department-dd" id="departamento">
-							<option value="">Todos</option>
+							<option value="0">Todos</option>
 						</select>
 					</div>
           <div class="form-group col-lg-3 col-sm-6 col-12">
 						<label for="Tipo de marca">Tipo de marca: </label>
-						<select class="form-control" id="tipoDeMarca">
+						<select class="form-control" id="marca">
 							<option>Todas</option>
 							<option>Entrada</option>
 							<option>Salida</option>
@@ -100,16 +114,13 @@
 					</div>
           <div class="form-group col-lg-3 col-sm-6 col-12">
 						<label for="Empleado">Empleado: </label>
-						<select class="form-control" id="empleado">
-							<option>Todos</option>
-							<option>Usuario 1</option>
-							<option>Usuario 2</option>
-              <option>Usuario 3</option>
+						<select class="form-control lista-empleados" id="empleado">
+							<option value="0">Todos</option>
 						</select>
 					</div>
 
           <div class="col-lg-4 col-sm-6 col-xs-12 mt-2 mb-4">
-						<button type="button" class="btn btn-lg btn-primary"><em class="fa fa-"></em>  Generar reporte</button>
+						<button type="button" class="btn btn-lg btn-primary get-report"><em class="fa fa-"></em>  Generar reporte</button>
 					</div>
 
           <div class="col-12 card mb-4">
@@ -129,45 +140,6 @@
 								</thead>
 
 								<tbody>
-									<tr>
-										<td>08:30am</td>
-
-										<td>Pedro Pérez</td>
-
-										<td>Analista de riesgos</td>
-
-										<td>Entrada</td>
-									</tr>
-
-									<tr>
-										<td>08:15am</td>
-
-										<td>Anabel Gonzales</td>
-
-										<td>Ingeniero</td>
-
-										<td>Entrada</td>
-									</tr>
-
-									<tr>
-										<td>8:10am</td>
-
-										<td>Jorge Meneses</td>
-
-										<td>Gerente de mercadeo</td>
-
-										<td>Entrada</td>
-									</tr>
-
-									<tr>
-										<td>8:00am</td>
-
-										<td>Raul Reina</td>
-
-										<td>Administradora</td>
-
-										<td>Entrada</td>
-									</tr>
 								</tbody>
                 </table>
               </div>

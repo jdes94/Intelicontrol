@@ -98,6 +98,7 @@
 			success: function (response) {
 				console.log('success', response);
 
+				$('.employees-table').html('');
 				$.each(response, function (i, employee) {
 				    $('.employees-table').append(`<tr>
 				        <td>` + employee.Id + `</td>
@@ -145,6 +146,7 @@
 			success: function (response) {
 				console.log('success', response);
 				
+				$('.zones-table').html('');
 				$.each(data, function (i, zone) {
 				    $('.zones-table').append(`<tr>
 				        <td>` + zone.Hora + `</td>
@@ -152,6 +154,66 @@
 				        <td>` + zone.Cargo + `</td>
 				        <td>` + zone.Departamento + `</td>
 				    </tr>`);
+				});
+			},
+
+			error: function (error) {
+				console.error('error', error);
+			}
+		});
+	});
+
+	$('.get-report').click(function() {
+		$.ajax({
+			url: base_url + 'reporteUsuarios',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				iddep: $('#departamento').val(),
+				marca: $('#marca').val(),
+				fecha: $('#fecha').val(),
+				hora: $('#hora').val(),
+				tipo: $('#tipo').val(),
+				fecha2: $('#fecha2').val(),
+				hora2: $('#hora2').val(),
+				tipo2: $('#tipo2').val(),
+			},
+
+			success: function (response) {
+				console.log('success', response);
+
+				$('.report-table').html('');
+				$.each(data, function (i, zone) {
+				    $('.report-table').append(`<tr>
+				        <td>` + zone.Hora + `</td>
+				        <td>` + zone.Name + `</td>
+				        <td>` + zone.Cargo + `</td>
+				        <td>` + parseInt(zone.Departamento) == 1 ? 'SALIDA' : 'ENTRADA' + `</td>
+				    </tr>`);
+				});
+			},
+
+			error: function (error) {
+				console.error('error', error);
+			}
+		});
+	});
+
+	$('.lista-empleados').ready(function () {
+		$.ajax({
+			url: base_url + 'listadoEmpleados',
+			type: 'GET',
+			dataType: 'json',
+			data: {iddep: 0},
+
+			success: function (response) {
+				console.log('success', response);
+
+				$.each(response, function (i, employee) {
+				    $('.lista-empleados').append($('<option>', { 
+				        value: employee.Id,
+				        text : employee.Nombre 
+				    }));
 				});
 			},
 
