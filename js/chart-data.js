@@ -1,5 +1,5 @@
 var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
-	
+
 	var lineChartData = {
 			labels : ["January","February","March","April","May","June","July"],
 			datasets : [
@@ -26,13 +26,13 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 			]
 
 		}
-		
+
 	var barChartData = {
-			labels : ["January","February","March","April","May","June","July"],
+			labels : ["Zona 1","Zona 2","Zona 3","Zona 4","Zona 5"," Zona 6","Zona 7"],
 			datasets : [
 				{
-					fillColor : "rgba(220,220,220,0.5)",
-					strokeColor : "rgba(220,220,220,0.8)",
+					fillColor : "rgba(245, 127, 23,0.5)",
+					strokeColor : "rgba(230, 81, 0, 0.8)",
 					highlightFill: "rgba(220,220,220,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",
 					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
@@ -42,24 +42,24 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					strokeColor : "rgba(128,130,228, 1)",
 					highlightFill : "rgba(128,130,228, 0.75)",
 					highlightStroke : "rgba(128,130,228, 1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [null]
 				}
 			]
-	
+
 		}
 
 	var pieData = [
 				{
 					value: 300,
-					color: "#8082e4",
-					highlight: "#7376df",
-					label: "Value 1"
+					color: "#f57f17",
+					highlight: "#f57f17",
+					label: "Entradas tarde"
 				},
 				{
 					value: 50,
 					color: "#a0a0a0",
 					highlight: "#999999",
-					label: "Value 2"
+					label: "Inasistencias"
 				},
 				{
 					value: 100,
@@ -75,7 +75,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 				}
 
 			];
-			
+
 	var doughnutData = [
 				{
 					value: 300,
@@ -102,7 +102,7 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 					label: "Value 4"
 				}
 			];
-			
+
 	var radarData = {
 	    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
 	    datasets: [
@@ -153,6 +153,5 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 		    	highlight: "#eeeeee",
 		    	label: "Value 4"
 		    }
-		
-	];
 
+	];

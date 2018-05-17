@@ -11,7 +11,7 @@
 
 	<link rel="icon" href="images/favicon.ico">
 
-	<title>Medialoot Bootstrap 4 Dashboard Template</title>
+	<title>Empleados</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,14 +29,16 @@
   <div class="container-fluid" id="wrapper">
 		<div class="row">
 			<nav class="sidebar col-xs-12 col-sm-4 col-lg-3 col-xl-2 bg-faded sidebar-style-1">
-				<h1 class="site-title"><a href="index.html"><em class="fa fa-rocket"></em> Intelicontrol</a></h1>
+				<h1 class="site-title"><a href="index.html"><img src="images/intelicontrol1.svg" alt="Intelicontrol" class="logo-intelicontrol"></a></h1>
 
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle"><em class="fa fa-bars"></em></a>
 
 				<ul class="nav nav-pills flex-column sidebar-nav">
 					<li class="nav-item"><a class="nav-link" href="index.html"><em class="fa fa-dashboard"></em> Dashboard <span class="sr-only">(current)</span></a></li>
 					<li class="nav-item"><a class="nav-link active" href="empleados.html"><em class="fa fa-group"></em> Empleados</a></li>
-					<li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-building"></em> Áreas</a></li>
+					<li class="nav-item"><a class="nav-link" href="zonas.html"><em class="fa fa-building"></em> Zonas</a></li>
+					<li class="nav-item"><a class="nav-link" href="reportes.html"><em class="fa fa-clock-o"></em> Reportes</a></li>
+					<li class="nav-item"><a class="nav-link" href="charts.html"><em class="fa fa-cog"></em> Configuración</a></li>
 				</ul>
 
 				<a href="#" class="logout-button"><em class="fa fa-power-off"></em> Salir</a>
@@ -64,13 +66,212 @@
 					</div>
 					<div class="clear"></div>
 				</header>
+
+				<div class="row mb-4">
+					<div class="col-lg-12 col-xl-6 mb-4">
+						<form class="form-inline">
+							<div class="form-group ">
+								<label for="DeparmentFilter" class="mr-3">Filtrar por departamento: </label>
+								<select class="form-control" id="exampleFormControlSelect1">
+									<option>Todos</option>
+									<option>Administración</option>
+									<option>Recursos Humanos</option>
+									<option>IT</option>
+									<option>Contabilidad</option>
+									<option>Mercadeo</option>
+									<option>Seguridad</option>
+								</select>
+							</div>
+						</form>
+					</div>
+					<div class="input-group col-lg-7 col-xl-6 h-50">
+						<input id="btn-input" type="text" class="form-control input-md" placeholder="Buscar" /><span class="input-group-btn">
+							<button class="btn btn-primary btn-md" id="btn-todo"><em class="fa fa-search"></em></button>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-9 col-sm-12">
+						<div class="card mb-4">
+							<div class="card-block">
+								<h3 class="card-title">Lista de Empleados</h3>
+
+								<div class="table-responsive">
+									<table class="table table-striped">
+										<tr>
+											<th>Cod</th>
+
+											<th>Nombre</th>
+
+											<th>Puesto</th>
+
+											<th>Departamento</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr>
+											<td>01</td>
+
+											<td>Pedro Pérez</td>
+
+											<td>Analista de riesgos</td>
+
+											<td>Administración</td>
+										</tr>
+
+										<tr>
+											<td>02</td>
+
+											<td>Anabel Gonzales</td>
+
+											<td>Ingeniero</td>
+
+											<td>Gerencia de proyectos</td>
+										</tr>
+
+										<tr>
+											<td>03</td>
+
+											<td>Jorge Meneses</td>
+
+											<td>Gerente de mercadeo</td>
+
+											<td>Mercadeo</td>
+										</tr>
+
+										<tr>
+											<td>04</td>
+
+											<td>Raul Reina</td>
+
+											<td>Administradora</td>
+
+											<td>Administración</td>
+										</tr>
+									</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row col-sm-12 col-lg-3 text-center m-0 p-0">
+						<div class="col-lg-12 col-sm-6 col-xs-12">
+							<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-plus"></em>  Agregar</button>
+						</div>
+						<div class="col-lg-12 col-sm-6 col-xs-12">
+							<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-edit"></em>  Modificar</button>
+						</div>
+						<div class="col-lg-12 col-sm-6 col-xs-12">
+							<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-close"></em>  Borrar</button>
+						</div>
+						<div class="col-lg-12 col-sm-6 col-xs-12">
+							<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-expand"></em>  Ver más</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-4 d-flex justify-content-center">
+
+					<div class="row col-xl-3 col-lg-4 col-sm-6 col-8 mb-2">
+						<div class="col-sm-12 mb-2">
+							<img src="images/user.png" alt="Usuario" class="img-thumbnail" style="height:200px; width:100%">
+						</div>
+						<div class="col-sm-12 d-flex justify-content-around">
+							<button type="button my-2" class="btn btn-md btn-primary mb-2"><em class="fa fa-files-o"></em></button>
+							<button type="button my-2" class="btn btn-md btn-primary mb-2"><em class="fa fa-close"></em></button>
+						</div>
+					</div>
+
+					<div class="row col-xl-9 col-lg-8 col-12  h-100">
+						<div class="form-group col-lg-6 col-12">
+							<label for="Código">Código:</label>
+							<input type="text" id="codigo" class="form-control">
+						</div>
+						<div class="form-group col-lg-6 col-12">
+							<label for="Nombre">Nombre:</label>
+							<input type="text" id="nombre" class="form-control">
+						</div>
+						<div class="form-group col-lg-6 col-12">
+							<label for="Número Id">Número Id:</label>
+							<input type="number" id="id" class="form-control">
+						</div>
+						<div class="form-group col-lg-6 col-12">
+							<label for="sexo">Sexo: </label>
+							<select class="form-control" id="exampleFormControlSelect1">
+								<option>Masculino</option>
+								<option>Femenino</option>
+							</select>
+						</div>
+						<div class="form-group col-lg-6 col-12">
+							<label for="Fecha Nacimiento">Fecha nacimiento: </label>
+							<input type="date" id="birthDate" class="form-control">
+						</div>
+						<div class="form-group col-lg-6 col-12">
+							<label for="Cel">Teléfono Celular: </label>
+							<input type="tel" id="cel" class="form-control">
+						</div>
+					</div>
+				</div>
+
+				<div class="row mb-4">
+					<div class="form-group col-lg-4">
+						<label for="Cel">Teléfono Habitación: </label>
+						<input type="tel" id="hab" class="form-control">
+					</div>
+					<div class="form-group col-lg-4 col-12">
+						<label for="Email">Email: </label>
+						<input type="email" id="email" class="form-control">
+					</div>
+					<div class="form-group col-lg-4 col-12">
+						<label for="Puesto">Puesto: </label>
+						<input type="text" id="puesto" class="form-control">
+					</div>
+					<div class="form-group col-lg-4 col-12">
+						<label for="Departamento">Departamento: </label>
+						<select class="form-control"id="departamento">
+							<option>Todos</option>
+							<option>Administración</option>
+							<option>Recursos Humanos</option>
+							<option>IT</option>
+							<option>Contabilidad</option>
+							<option>Mercadeo</option>
+							<option>Seguridad</option>
+						</select>
+					</div>
+					<div class="form-group col-lg-8 col-12">
+				    <label for="Dirección">Dirección</label>
+				    <textarea class="form-control" id="address" rows="2"></textarea>
+				  </div>
+				</div>
+
+				<div class="row mb-4 d-flex justify-content-center">
+					<div class="col-lg-4 col-sm-6 col-xs-12">
+						<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-save"></em>  Guardar</button>
+					</div>
+					<div class="col-lg-4 col-sm-6 col-xs-12">
+						<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-sign-out"></em>  Salir</button>
+					</div>
+					<div class="col-lg-4 col-sm-6 col-xs-12">
+						<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-"></em>  Reporte de empleado</button>
+					</div>
+				</div>
+
       </main>
     </div>
   </div>
 
 	    <!-- Bootstrap core JavaScript-->
-	    <script src="js/jquery-3.2.1.min.js"></script>
+			<script src="js/jquery-3.2.1.min.js"></script>
 	    <script src="dist/js/bootstrap.min.js"></script>
 
+	    <script src="js/chart.min.js"></script>
+	    <script src="js/chart-data.js"></script>
+	    <script src="js/easypiechart.js"></script>
+	    <script src="js/easypiechart-data.js"></script>
+	    <script src="js/bootstrap-datepicker.js"></script>
+	    <script src="js/custom.js"></script>
+
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 </body>
 </html>
