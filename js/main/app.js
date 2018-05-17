@@ -66,4 +66,24 @@
 		
 	});
 
+	$.ajax({
+		url: base_url + 'buscarDepartamento',
+		type: 'GET',
+		dataType: 'json',
+
+		success: function (response) {
+			console.log('success', response);
+			$.each(response, function (i, department) {
+			    $('.department-dd').append($('<option>', { 
+			        value: department.Id,
+			        text : department.Descripcion 
+			    }));
+			});
+		},
+
+		error: function (error) {
+			console.error('error', error);
+		}
+	});
+
 })();
