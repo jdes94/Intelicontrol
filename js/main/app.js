@@ -96,13 +96,60 @@
 
 			success: function (response) {
 				console.log('success', response);
-				
+
 				$.each(response, function (i, employee) {
 				    $('.employees-table').append(`<tr>
 				        <td>` + employee.Id + `</td>
 				        <td>` + employee.Nombre + `</td>
 				        <td>` + employee.Cargo + `</td>
 				        <td>` + employee.Departamento + `</td>
+				    </tr>`);
+				});
+			},
+
+			error: function (error) {
+				console.error('error', error);
+			}
+		});
+	});
+
+	$('.department-dd').ready(function () {
+		$.ajax({
+			url: base_url + 'buscarDispositivo',
+			type: 'GET',
+			dataType: 'json',
+
+			success: function (response) {
+				console.log('success', response);
+				$.each(response, function (i, department) {
+				    $('.zone-selector').append($('<option>', { 
+				        value: department.Id,
+				        text : department.Dispositivos 
+				    }));
+				});
+			},
+
+			error: function (error) {
+				console.error('error', error);
+			}
+		});
+	});
+
+	$('.zone-selector').change(function () {
+		$.ajax({
+			url: base_url + 'reporteZonas',
+			type: 'GET',
+			dataType: 'json',
+			data: {zona: $('.zone-selector').val()},
+			success: function (response) {
+				console.log('success', response);
+				
+				$.each(data, function (i, zone) {
+				    $('.zones-table').append(`<tr>
+				        <td>` + zone.Hora + `</td>
+				        <td>` + zone.Name + `</td>
+				        <td>` + zone.Cargo + `</td>
+				        <td>` + zone.Departamento + `</td>
 				    </tr>`);
 				});
 			},
