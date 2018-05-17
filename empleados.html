@@ -153,7 +153,7 @@
 					</div>
 					<div class="row col-sm-12 col-lg-3 text-center m-0 p-0">
 						<div class="col-lg-12 col-sm-6 col-xs-12">
-							<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-plus"></em>  Agregar</button>
+							<button type="button" class="btn btn-lg btn-primary mb-4 show-employee-form"><em class="fa fa-plus"></em>  Agregar</button>
 						</div>
 						<div class="col-lg-12 col-sm-6 col-xs-12">
 							<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-edit"></em>  Modificar</button>
@@ -161,10 +161,13 @@
 						<div class="col-lg-12 col-sm-6 col-xs-12">
 							<button type="button" class="btn btn-lg btn-primary mb-4"><em class="fa fa-close"></em>  Borrar</button>
 						</div>
+						<div class="col-lg-12 col-sm-6 col-xs-12">
+							<button type="button" class="btn btn-lg btn-primary mb-4 show-department-form"><em class="fa fa-close"></em>  Agregar <br> Deptartamento</button>
+						</div>
 					</div>
 				</div>
 
-				<form class="save-employees" action="javascript:;" method="post">
+				<form class="save-employees" action="javascript:;" method="post" style="display: none">
 					<div class="row mb-4 d-flex justify-content-center">
 
 						<div class="row col-xl-3 col-lg-4 col-sm-6 col-8 mb-2">
@@ -248,7 +251,7 @@
 					</div>
 				</form>
 
-				<form class="" action="index.html" method="post">
+				<form class="save-department" action="javascript:;" style="display:none">
 					<div class="row mb-4">
 						<div class="form-group col-lg-4 col-12">
 							<label for="nombreDep">Id departamento: </label>
