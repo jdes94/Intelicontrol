@@ -49,9 +49,9 @@
 			type: 'GET',
 			dataType: 'json',
 			data: {
-				description: $('#idDep').val(),
-				supervisor: $('#nombreDep').val(),
-				superemail: $('#supervisor').val(),
+				description: $('#nombreDep').val(),
+				supervisor: $('#supervisor').val(),
+				superemail: $('#emailDep').val(),
 			},
 
 			success: function (response) {
