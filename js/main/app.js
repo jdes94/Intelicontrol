@@ -88,11 +88,12 @@
 		});
 	});
 
-	$('.employees-table').ready(function () {
+	$('.dept-selector').change(function () {
 		$.ajax({
 			url: base_url + 'listadoEmpleados',
 			type: 'GET',
 			dataType: 'json',
+			data: {iddep: $('.dept-selector').val()},
 
 			success: function (response) {
 				console.log('success', response);
