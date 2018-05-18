@@ -252,7 +252,7 @@
 				        <td>` + zone.Hora + `</td>
 				        <td>` + zone.Name + `</td>
 				        <td>` + zone.Cargo + `</td>
-				        <td>` + parseInt(zone.Marca) == 1 ? 'SALIDA' : 'ENTRADA' + `</td>
+				        <td>` + (parseInt(zone.Marca) == 1 ? 'SALIDA' : 'ENTRADA') + `</td>
 				    </tr>`);
 				});
 			},
