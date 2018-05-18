@@ -236,10 +236,10 @@
 				iddep: $('#departamento').val(),
 				marca: $('#marca').val(),
 				fecha: $('#fecha').val(),
-				hora: ($('#hora').val() + ':00').toLowerString().replace('a. m.', '').replace('p. m.', ''),
+				hora: ($('#hora').val() + ':00').toLowerCase().replace('a. m.', '').replace('p. m.', ''),
 				tipo: $('#tipo').val(),
 				fecha2: $('#fecha2').val(),
-				hora2: ($('#hora2').val() + ':00').toLowerString().replace('a. m.', '').replace('p. m.', ''),
+				hora2: ($('#hora2').val() + ':00').toLowerCase().replace('a. m.', '').replace('p. m.', ''),
 				tipo2: $('#tipo2').val(),
 			},
 
