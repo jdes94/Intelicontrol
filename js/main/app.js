@@ -134,7 +134,7 @@
 				url: base_url + 'borrarUsuario',
 				type: 'GET',
 				dataType: 'json',
-				data: {iduser: _this.data('id')},
+				data: {iduser: _this.data('id').replace('.0', '')},
 
 				success: function (response) {
 					console.log('success', response);
