@@ -125,13 +125,42 @@
 
 	$('body').delegate('.delete-user', 'click', function() {
 		var _this = $(this);
-		
-		if (confirm('Esta seguro(a) de eliminar al usuario: ' _this.data('name')))
+
+		if (confirm('Esta seguro(a) de eliminar al usuario: ' + _this.data('name')))
 			$.ajax({
 				url: base_url + 'borrarUsuario',
 				type: 'GET',
 				dataType: 'json',
 				data: {iduser: _this.data('id')},
+
+				success: function (response) {
+					console.log('success', response);
+					window.location.reload();
+				},
+
+				error: function (error) {
+					console.error('error', error);
+				}
+			});
+	});
+
+	$('#update-user-modal').modal('toggle');
+	$('body').delegate('.update-user', 'click', function() {
+		var _this = $(this);
+
+		if (confirm('Esta seguro(a) de actualizar la información del usuario?'))
+			$.ajax({
+				url: base_url + 'actualizarUsuario',
+				type: 'GET',
+				dataType: 'json',
+				data: {
+					cedula: $('#cedula').val(),
+					celular: $('#celular').val(),
+					telefono: $('#telefono').val(),
+					direc: $('#direc').val(),
+					iddep: $('#iddep').val(),
+					puesto: $('#puesto').val(),
+				},
 
 				success: function (response) {
 					console.log('success', response);
@@ -212,7 +241,7 @@
 				console.log('success', response);
 
 				$('.report-table').html('');
-				$.each(data, function (i, zone) {
+				$.each(response, function (i, zone) {
 				    $('.report-table').append(`<tr>
 				        <td>` + zone.Hora + `</td>
 				        <td>` + zone.Name + `</td>
