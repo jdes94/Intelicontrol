@@ -112,7 +112,10 @@
 				        <td>` + employee.Nombre + `</td>
 				        <td>` + employee.Cargo + `</td>
 				        <td>` + employee.Departamento + `</td>
-				        <td><button class="btn btn-danger delete-user" data-id="` + employee.Id + `" data-name="` + employee.Nombre + `">BORRAR</button></td>
+				        <td>
+				        	<button class="btn btn-warning update-user" data-toggle="#update-user-modal" data-info="` + employee + `">MODIFICAR</button>
+				        	<button class="btn btn-danger delete-user" data-id="` + employee.Id + `" data-name="` + employee.Nombre + `">BORRAR</button>
+				        </td>
 				    </tr>`);
 				});
 			},
@@ -144,9 +147,15 @@
 			});
 	});
 
-	$('#update-user-modal').modal('toggle');
 	$('body').delegate('.update-user', 'click', function() {
 		var _this = $(this);
+
+		// $('#cedula').val(_this.data('info').);
+		// $('#celular').val(_this.data('info').);
+		// $('#telefono').val(_this.data('info').);
+		// $('#direc').val(_this.data('info').);
+		// $('#iddep').val(_this.data('info').);
+		// $('#puesto').val(_this.data('info').);
 
 		if (confirm('Esta seguro(a) de actualizar la información del usuario?'))
 			$.ajax({
