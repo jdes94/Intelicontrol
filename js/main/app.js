@@ -70,7 +70,7 @@
 				console.error('error', error);
 			}
 		});
-		
+
 	});
 
 	$('.department-dd').ready(function () {
@@ -82,9 +82,9 @@
 			success: function (response) {
 				console.log('success', response);
 				$.each(response, function (i, department) {
-				    $('.department-dd').append($('<option>', { 
+				    $('.department-dd').append($('<option>', {
 				        value: department.Id,
-				        text : department.Descripcion 
+				        text : department.Descripcion
 				    }));
 				});
 			},
@@ -188,9 +188,9 @@
 			success: function (response) {
 				console.log('success', response);
 				$.each(response, function (i, department) {
-				    $('.zone-selector').append($('<option>', { 
+				    $('.zone-selector').append($('<option>', {
 				        value: department.Id,
-				        text : department.Dispositivos 
+				        text : department.Dispositivos
 				    }));
 				});
 			},
@@ -209,7 +209,7 @@
 			data: {zona: $('.zone-selector').val()},
 			success: function (response) {
 				console.log('success', response);
-				
+
 				$('.zones-table').html('');
 				$.each(response, function (i, zone) {
 				    $('.zones-table').append(`<tr>
@@ -274,9 +274,9 @@
 	// 			console.log('success', response);
 
 	// 			$.each(response, function (i, employee) {
-	// 			    $('.lista-empleados').append($('<option>', { 
+	// 			    $('.lista-empleados').append($('<option>', {
 	// 			        value: employee.Id,
-	// 			        text : employee.Nombre 
+	// 			        text : employee.Nombre
 	// 			    }));
 	// 			});
 	// 		},

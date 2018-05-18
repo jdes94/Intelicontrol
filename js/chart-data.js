@@ -28,14 +28,14 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 		}
 
 	var barChartData = {
-			labels : ["Zona 1","Zona 2","Zona 3","Zona 4","Zona 5"," Zona 6","Zona 7"],
+			labels : ["","","","Entrada principal","","",""],
 			datasets : [
 				{
 					fillColor : "rgba(245, 127, 23,0.5)",
 					strokeColor : "rgba(230, 81, 0, 0.8)",
 					highlightFill: "rgba(220,220,220,0.75)",
 					highlightStroke: "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+					data : [null,null,null,800,null,null,null]
 				},
 				{
 					fillColor : "rgba(128,130,228, 0.6)",
@@ -50,30 +50,23 @@ var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
 
 	var pieData = [
 				{
-					value: 300,
+					value: 4,
 					color: "#f57f17",
 					highlight: "#f57f17",
 					label: "Entradas tarde"
 				},
 				{
-					value: 50,
+					value: 2,
 					color: "#a0a0a0",
 					highlight: "#999999",
 					label: "Inasistencias"
 				},
 				{
-					value: 100,
-					color:"#dfdfdf",
-					highlight: "#cccccc",
-					label: "Value 3"
+					value: 1,
+					color: "#F5EE17",
+					highlight: "#F5EE17",
+					label: "Salidas tempranas"
 				},
-				{
-					value: 120,
-					color: "#f7f7f7",
-					highlight: "#eeeeee",
-					label: "Value 4"
-				}
-
 			];
 
 	var doughnutData = [
