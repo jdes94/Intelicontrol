@@ -237,10 +237,10 @@
 				marca: $('#marca').val(),
 				fecha: $('#fecha').val(),
 				hora: $('#hora').val() + ':00',
-				tipo: $('#tipo').val(),
+				// tipo: $('#tipo').val(),
 				fecha2: $('#fecha2').val(),
 				hora2: $('#hora2').val() + ':00',
-				tipo2: $('#tipo2').val(),
+				// tipo2: $('#tipo2').val(),
 			},
 
 			success: function (response) {
