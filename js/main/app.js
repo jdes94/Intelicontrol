@@ -148,15 +148,12 @@
 	});
 
 	$('body').delegate('.update-user', 'click', function() {
-		var _this = $(this);
+		$('#cedula').val($(this).data('info').Cedula);
+		$('#iddep').val($(this).data('info').Departamento);
+		$('#puesto').val($(this).data('info').Cargo);
+	});
 
-		// $('#cedula').val(_this.data('info').);
-		// $('#celular').val(_this.data('info').);
-		// $('#telefono').val(_this.data('info').);
-		// $('#direc').val(_this.data('info').);
-		// $('#iddep').val(_this.data('info').);
-		// $('#puesto').val(_this.data('info').);
-
+	$('.update-user-btn').click(function() {
 		if (confirm('Esta seguro(a) de actualizar la información del usuario?'))
 			$.ajax({
 				url: base_url + 'actualizarUsuario',
@@ -239,10 +236,10 @@
 				iddep: $('#departamento').val(),
 				marca: $('#marca').val(),
 				fecha: $('#fecha').val(),
-				hora: $('#hora').val(),
+				hora: $('#hora').val() + ':00',
 				tipo: $('#tipo').val(),
 				fecha2: $('#fecha2').val(),
-				hora2: $('#hora2').val(),
+				hora2: $('#hora2').val() + ':00',
 				tipo2: $('#tipo2').val(),
 			},
 
