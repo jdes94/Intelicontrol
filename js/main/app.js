@@ -245,6 +245,10 @@
 
 			success: function (response) {
 				console.log('success', response);
+				var _data = response.reduce(function (r, c) { 
+								return r += Object.values(c).slice(0, -1) + (parseInt(c.Marca) ? ',SALIDA' : ',ENTRADA') + '\n'; 
+							}, 'Hora,Nombre,Puesto,Tipo de marca\n');
+				build_csv_btn(_data);
 
 				$('.report-table').html('');
 				$.each(response, function (i, zone) {
@@ -313,4 +317,10 @@
 		});
 	});
 
+	var build_csv_btn = function (data) {
+		window.URL = window.URL || window.webkiURL;
+	    var blob = new Blob([data]), target = window.URL.createObjectURL(blob);
+
+	    $('.export-to-excel').prop('href', target).prop('download', 'Report.csv');
+	};
 })();
