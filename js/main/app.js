@@ -266,13 +266,14 @@
 				        <td>` + (parseInt(zone.Marca) == 1 ? 'SALIDA' : 'ENTRADA') + `</td>
 				    </tr>`);
 				});
+				
+				$('.export-wraper, .html-report').fadeIn();
 			},
 
 			error: function (error) {
 				console.error('error', error);
 			}
 		});
-				$('.export-wraper, .html-report').fadeIn();
 	});
 
 	// $('.lista-empleados').ready(function () {
