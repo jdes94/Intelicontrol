@@ -317,6 +317,42 @@
 		});
 	});
 
+	$('.export-to-pdf').click(function() {
+		var pdf = new jsPDF('p', 'mm', 'a4');
+      	pdf.addHTML($('#report-wraper')[0], function () {
+        	html2canvas($('#report-wraper'), {
+                useCORS: true,
+				onrendered: function (canvas) {
+					var dataUrl = canvas.toDataURL("image/png"), 
+						report = new jsPDF('landscape'),
+							_logo = new Image,
+							logo;
+					
+					report.setFontSize(22);
+					_logo.src = 'images/intelicontrol1.png';
+
+					_logo.onload = function () {
+						var canvas = document.createElement('canvas');
+						document.body.append(canvas);
+
+						canvas.height = _logo.height;
+						canvas.width = _logo.width;
+						canvas.getContext('2d').drawImage(_logo, 0, 0);
+
+						logo = canvas.toDataURL('image/png').slice('data:image/png;base64,'.length);
+						logo = atob(logo);
+						document.body.removeChild(canvas);
+
+						report.addImage(logo, 'PNG', 15, 5);
+						report.text(10, 45, 'Reporte de marcajes:');
+						report.addImage(dataUrl, 'PNG', 10, 50);
+						report.save('Report.pdf');
+					};
+				}
+            });
+       });
+	});
+
 	var build_csv_btn = function (data) {
 		window.URL = window.URL || window.webkiURL;
 	    var blob = new Blob([data]), target = window.URL.createObjectURL(blob);
