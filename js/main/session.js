@@ -5,19 +5,28 @@ $(function() {
 				name: 'Administrador',
 				user: 'admin',
 				psw: 'admin',
-				role: 'admin'
+				role: 'admin',
+				limitations: false
 			},
 			{
 				name: 'Recurso Humanos',
 				user: 'rrhh',
 				psw: 'rrhh',
-				role: 'rrhh'
+				role: 'rrhh',
+				limitations: {
+					target: '.no-rrhh',
+					views: ['zonas.html']
+				}
 			},
 			{
 				name: 'Acceso Público',
 				user: 'public',
 				psw: 'public',
-				role: 'public'
+				role: 'seguridad',
+				limitations: {
+					target: '.no-public',
+					views: ['empleados.html']
+				}
 			}
 		],
 		location = window.location.href.split('/').slice(-1).toString();
@@ -29,21 +38,23 @@ $(function() {
 
 	if (Cookies.get('inteli_control_session')){
 		var session = JSON.parse(Cookies.get('inteli_control_session'));
-		console.log(session)
-		$('.username').children('h4').html(session.user).siblings('h6').html(session.name)
-	}
+		$('.username').children('h4').html(session.user).siblings('h6').html(session.name);
 
-	console.log(Cookies.get('inteli_control_session'))
+		if (session.limitations) {
+			$(session.limitations.target).hide();
+			if (session.limitations.views.indexOf(location) !== -1)
+				window.history.back();
+		}
+	}
 
 	$('.login-form').submit(function(e) {
 		e.preventDefault();
-
-		var findIt = users.find(function (user) {
-						return user.user === $('.usr').val() && user.psw === $('.psw').val()
-					});
+		var findIt = users.find(function (user) { return user.user === $('.usr').val() && user.psw === $('.psw').val(); });
 
 		if (findIt) {
+			delete findIt.psw;
 			Cookies.set('inteli_control_session', findIt);
+
 			window.location.href = 'index.html';
 		} else
 			alert('Datos incorrectos!');
