@@ -30,29 +30,29 @@
       <div class="row justify-center">
         <div class="col-sm-8 col-m-6 col-lg-4 no-padding d-block">
           <div class=" login-container">
-            <h1 class="site-title text-center"><a href=""><img src="images/intelicontrol1.svg" alt="Intelicontrol" class="logo-intelicontrol"></h1>
+            <h1 class="site-title text-center"><a href=""><img src="images/intelicontrol1.svg" alt="Intelicontrol" class="logo-intelicontrol"></a></h1>
               <!-- Usuario-->
                 <div class="form-group">
                   <label class="col-12 control-label no-padding" for="name">Usuario</label>
 
                   <div class="col-12 no-padding">
-                    <input name="Usuario"  value="Administrador" type="text" class="form-control">
+                    <input name="Usuario"  placeholder="administrador" type="text" class="form-control text-center usr">
                   </div>
                 </div>
-                <form class="" action="index.html" method="post">
+                <form class="login-form" method="post">
                   <!-- Contraseña-->
                   <div class="form-group">
                     <label class="col-12 control-label no-padding">Contraseña</label>
 
                     <div class="col-12 no-padding">
-                      <input name="Contraseña" value="xxxxxxxxxxxx" type="password" class="form-control">
+                      <input name="Contraseña" placeholder="xxxxxxxxxxxx" type="password" class="form-control text-center psw">
                     </div>
                   </div>
 
                   <!--Boton ingresar -->
                   <div class="form-group">
                     <div class="col-12 no-padding text-center">
-                      <button href="index.html"  class="btn btn-primary btn-lg">Ingresar</button>
+                      <button type="submit" class="btn btn-primary btn-lg">Ingresar</button>
                     </div>
                   </div>
                 </form>
@@ -63,7 +63,8 @@
         </div>
       </div>
     </div>
-    <!-- <script src="js/jquery-3.2.1.min.js"></script> -->
-    <!-- <script src="js/main/app.js"></script> -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/js.cookie.js"></script>
+    <script src="js/main/session.js"></script>
   </body>
 </html>
