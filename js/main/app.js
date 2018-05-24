@@ -1,7 +1,7 @@
 (function(){
 
-	var base_url = 'http://localhost:8080/tesis3/rest/';
-
+	var base_url = 'http://localhost:8080/tesis3/rest/', pdf_data = {col: ['Hora', 'Nombre', 'Puesto', 'Tipo de marca'], row: []}, csv_data = 'Hora,Nombre,Puesto,Tipo de marca\n';
+	
 
 	$('a.delay').click(function(e) {
 		e.preventDefault();
@@ -245,10 +245,17 @@
 
 			success: function (response) {
 				console.log('success', response);
-				var _data = response.reduce(function (r, c) { 
-								return r += Object.values(c).slice(0, -1) + (parseInt(c.Marca) ? ',SALIDA' : ',ENTRADA') + '\n'; 
-							}, 'Hora,Nombre,Puesto,Tipo de marca\n');
-				build_csv_btn(_data);
+				csv_data = response.reduce(function (r, c) { 
+								var marca = parseInt(c.Marca) ? 'SALIDA' : 'ENTRADA',
+									row = Object.values(c).slice(0, -1);
+
+								row.push(marca);
+								pdf_data.row.push(row);
+
+								return r += Object.values(c).slice(0, -1) + ',' + marca + '\n'; 
+							}, csv_data);
+
+				build_csv_btn(csv_data);
 
 				$('.report-table').html('');
 				$.each(response, function (i, zone) {
@@ -265,6 +272,7 @@
 				console.error('error', error);
 			}
 		});
+				$('.export-wraper, .html-report').fadeIn();
 	});
 
 	// $('.lista-empleados').ready(function () {
@@ -318,39 +326,27 @@
 	});
 
 	$('.export-to-pdf').click(function() {
-		var pdf = new jsPDF('p', 'mm', 'a4');
-      	pdf.addHTML($('#report-wraper')[0], function () {
-        	html2canvas($('#report-wraper'), {
-                useCORS: true,
-				onrendered: function (canvas) {
-					var dataUrl = canvas.toDataURL("image/png"), 
-						report = new jsPDF('landscape'),
-							_logo = new Image,
-							logo;
-					
-					report.setFontSize(22);
-					_logo.src = 'images/intelicontrol1.png';
+		var report = new jsPDF('p', 'pt', 'a4'), _logo = new Image, logo;
 
-					_logo.onload = function () {
-						var canvas = document.createElement('canvas');
-						document.body.append(canvas);
+		_logo.src = 'images/intelicontrol1.png';
+		_logo.onload = function () {
+			var canvas = document.createElement('canvas');
+			document.body.append(canvas);
 
-						canvas.height = _logo.height;
-						canvas.width = _logo.width;
-						canvas.getContext('2d').drawImage(_logo, 0, 0);
+			canvas.height = _logo.height;
+			canvas.width = _logo.width;
+			canvas.getContext('2d').drawImage(_logo, 0, 0);
 
-						logo = canvas.toDataURL('image/png').slice('data:image/png;base64,'.length);
-						logo = atob(logo);
-						document.body.removeChild(canvas);
+			logo = canvas.toDataURL('image/png').slice('data:image/png;base64,'.length);
+			logo = atob(logo);
+			document.body.removeChild(canvas);
 
-						report.addImage(logo, 'PNG', 15, 5);
-						report.text(10, 45, 'Reporte de marcajes:');
-						report.addImage(dataUrl, 'PNG', 10, 50);
-						report.save('Report.pdf');
-					};
-				}
-            });
-       });
+			report.addImage(logo, 'PNG', 40, 5);
+			report.setFontSize(18);
+			report.text(40, 120, 'Reporte de marcajes:');
+			report.autoTable(pdf_data.col, pdf_data.row, {margin: {top: 130}});
+			report.save('Report.pdf');
+		};
 	});
 
 	var build_csv_btn = function (data) {
