@@ -1,6 +1,8 @@
 (function(){
 
-	var base_url = 'http://localhost:8080/tesis3/rest/', pdf_data = {col: ['Hora', 'Nombre', 'Puesto', 'Tipo de marca'], row: []}, csv_data = 'Hora,Nombre,Puesto,Tipo de marca\n';
+	var base_url = 'http://localhost:8080/tesis3/rest/', 
+		pdf_data = {col: ['Hora', 'Nombre', 'Puesto', 'Tipo de marca'], row: []}, 
+		csv_data = 'Hora,Nombre,Puesto,Tipo de marca\n';
 	
 
 	$('a.delay').click(function(e) {
@@ -356,4 +358,53 @@
 
 	    $('.export-to-excel').prop('href', target).prop('download', 'Report.csv');
 	};
+
+	$('#attendance_chart').ready(function () {
+		var entries = $.ajax({url: base_url + 'figuraEntradas', type: 'GET', dataType: 'json'}).responseJSON(),
+			exits = $.ajax({url: base_url + 'figuraSalidas', type: 'GET', dataType: 'json'}).responseJSON(),
+
+			chart_data = [
+				{
+					value: entries,
+					color: '#f57f17',
+					highlight: '#f57f17',
+					label: 'Entradas tarde'
+				},
+				{
+					value: entries,
+					color: '#F5EE17',
+					highlight: '#F5EE17',
+					label: 'Salidas tempranas'
+				}
+			];
+
+		var attendance_chart = document.getElementById('attendance_chart').getContext('2d');
+		new Chart(attendance_chart).Pie(chart_data, {responsive: true, segmentShowStroke: false});
+	});
+
+
+	$('#zones_chart').ready(function () {
+		var zones = $.ajax({url: base_url + 'figuraZona', type: 'GET', dataType: 'json'}).responseJSON(),
+
+			var chart_data = {
+				labels : ['Entrada principal'],
+				datasets : [
+					{
+						fillColor : 'rgba(245, 127, 23,0.5)',
+						strokeColor : 'rgba(230, 81, 0, 0.8)',
+						highlightFill: 'rgba(220,220,220,0.75)',
+						highlightStroke: 'rgba(220,220,220,1)',
+						data : [zones]
+					}
+				]
+			};
+
+		var zones_chart = document.getElementById('zones_chart').getContext('2d');
+		new Chart(zones_chart).Bar(chart_data, {
+									responsive: true,
+									scaleLineColor: 'rgba(0,0,0,.2)',
+									scaleGridLineColor: 'rgba(0,0,0,.05)',
+									scaleFontColor: '#c5c7cc'
+								});
+	});
 })();
